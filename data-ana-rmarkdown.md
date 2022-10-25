@@ -315,28 +315,28 @@ options(scipen=999)
 ```
 According to this graph, Monday - Friday, customers are less likely to ride bikes in comparison to subscribers. However, on Saturday and Sunday, customers are more privy to ride bikes.
 
-![](images/Rplot01-01.png)
+![](https://github.com/sam-is-curious/Google-Data-Analytics-Capstone-Project-Cyclistic-Bike-Share/blob/main/data-ana-images/total%20num%20of%20rides%20by%20usertype%20in%20a%20week.png?raw=true)
 
 ``` r
 #Let's create a visualization for average duration all_trips_v2 %\>% mutate(weekdays (start_time, label = TRUE)) %\>% group_by(usertype, weekday) %\>% summarise(number_of_rides = n(), average_duration = mean(ride_length)) %\>% arrange(usertype, weekday) %\>% ggplot(aes(x = weekday, y = average_duration, fill = usertype)) + geom_col(position = "dodge")+ labs(title="Average Duration by UserType", x = "Week Day", y = "Average Duration") + theme(axis.text.x = element_text(angle = 60, hjust = 1))
 ```
 The average duration during the week is higher for customers in comparison to subscribers.
 
-![](images/Rplot01.png)
+![](https://github.com/sam-is-curious/Google-Data-Analytics-Capstone-Project-Cyclistic-Bike-Share/blob/main/data-ana-images/average%20duration%20by%20usertype.png?raw=true)
 
 ``` r
 `#Let's visualize the number of rides by bike id all_trips %\>% mutate(weekday = wday(start_time, label = TRUE)) %\>% group_by(bikeid, usertype) %\>% summarise(number_of_rides = n(), average_duration = mean(ride_length)) %\>% arrange(bikeid, usertype) %\>% ggplot(aes(x = bikeid, y = number_of_rides, fill = usertype)) + geom_col(position = "dodge") + labs(title="Total Number of Rides by BikeId", x = "Week Day", y = "Number of Rides") + theme(axis.text.x = element_text(angle = 60, hjust = 1))
 ```
  For the type of bikes used during the weekday, it seems that customers and subscribers enjoy the classic bike with the electric bike coming in second
  
-![](images/Rplot.png)
+![](https://github.com/sam-is-curious/Google-Data-Analytics-Capstone-Project-Cyclistic-Bike-Share/blob/main/data-ana-images/total%20num%20of%20rides%20by%20bikeid.png?raw=true)
 
 ``` r
 `#Average Ride Duration For Each User Type For One Year all_trips_v2 %\>% group_by(usertype, month) %\>% summarise(average_duration = mean(ride_length)) %\>% arrange(usertype, month) %\>% ggplot(aes(x = month, y = average_duration, group = usertype)) + geom_line(aes(color = usertype)) + geom_point() + scale_x\_discrete(labels = c("Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul")) + labs(title = "Average Ride Duration For Each User Type In One Year", x = "Month", y = "Average Duration (sec)", color = "User Type")
 ```
 For ride duration for a full year, the peak for customers is in the months of Dec and May. The lowest month for customers is in Feb. In comparison, the peak for subscribers is also in Dec followed by April, May, and June. The lowest months for subscribers are Aug, Nov, Jan, and Mar.
 
-![](images/Rplot-01.png)
+![](https://github.com/sam-is-curious/Google-Data-Analytics-Capstone-Project-Cyclistic-Bike-Share/blob/main/data-ana-images/average%20ride%20duration%20for%20each%20user%20type%20in%20one%20year.png?raw=true)
 
 ``` r
 `#Number Of Rides For Each User Type For One Year all_trips_v2 %\>% group_by(usertype, month) %\>% summarise(number_of_rides = n()) %\>% arrange(usertype, month) %\>% ggplot(aes(x = month, y = number_of_rides, group = usertype)) + geom_line(aes(color = usertype)) + geom_point() + scale_y\_continuous(labels = label_number(suffix = " K", scale = 1e-4)) + scale_x\_discrete(labels = c("Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul")) + labs(title = "Number of Rides For Each User Type In One Year", x = "Month", y = "Number of Rides", color = "User Type")
@@ -346,28 +346,28 @@ Subscribers were at a peak in Aug followed by a decline in the months of Sept - 
 There was an increase in Nov/Dec followed by another decline in Jan.
 Both customers and subscribers shared a high peak in April and May.
 
-![](images/Rplot-02.png)
+![](https://github.com/sam-is-curious/Google-Data-Analytics-Capstone-Project-Cyclistic-Bike-Share/blob/main/data-ana-images/number%20of%20rides%20for%20each%20usertype%20in%20one%20year.png?raw=true)
 
 ```r
 #Top 20 station by number of rides booked for subscribed members all_trips_v2 %\>% filter(!is.na(from_station_name)) %\>% filter(usertype == "Subscriber") %\>% group_by(from_station_name) %\>% summarise(number_of_rides = n(), avg_ride_length = mean(ride_length), avg_ride_length_min = mean(ride_length) / 60) %\>% arrange(-number_of_rides) %\>% head(20)
 ```
 The top station for the #of rides booked for subscribed members is, Kingsbury St & Kinzie St.
 
-![](images/Top%2020%20station%20by%20number%20of%20rides%20booked%20for%20subscriber%20members.png)
+![](https://github.com/sam-is-curious/Google-Data-Analytics-Capstone-Project-Cyclistic-Bike-Share/blob/main/data-ana-images/Top%2020%20station%20by%20number%20of%20rides%20booked%20for%20subscriber%20members.png?raw=true)
 
 ``` r
 #Top 20 station by number of rides booked for customer members all_trips_v2%\>% filter(!is.na(from_station_name)) %\>% filter(usertype == "Customer") %\>% group_by(from_station_name) %\>% summarise(number_of_rides = n(), avg_ride_length = mean(ride_length), avg_ride_length_min = mean(ride_length) / 60) %\>% arrange(-number_of_rides) %\>% head(20)
 ```
 The top station for the #of rides booked for customers is Streeter Dr & Grand Ave.
 
-![](images/Top%2020%20station%20by%20number%20of%20rides%20booked%20for%20customer%20members.png)
+![](https://github.com/sam-is-curious/Google-Data-Analytics-Capstone-Project-Cyclistic-Bike-Share/blob/main/data-ana-images/Top%2020%20station%20by%20number%20of%20rides%20booked%20for%20customer%20members.png?raw=true)
 
 ``` r
 #Total number of rides by customer and subscribers ggplot(all_trips_v2, aes(x = fct_infreq(usertype)))+ geom_bar(width = 0.5)+ labs(x = NULL, y = "Number of rides", title = "Total rides of Subscribers vs Customers")+ scale_y\_continuous(labels = unit_format(unit = "M", scale = 1e-6))
 ```
 For the total number of rides of subscribers and customers, the subscribers are in the lead with over 1 million subscribers. and customers with a little over 0.75 million.
 
-![](images/Rplot-04.png)
+![](https://github.com/sam-is-curious/Google-Data-Analytics-Capstone-Project-Cyclistic-Bike-Share/blob/main/data-ana-images/total%20rides%20of%20subscribers%20vs%20customers.png?raw=true)
 
 ``` r
 #=================================================
